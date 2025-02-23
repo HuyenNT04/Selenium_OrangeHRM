@@ -34,6 +34,7 @@ public class GeneralInformation extends BaseTest { //use all funcs in BaseTest
     public void GI_01_CheckUI(){
         //verifyTrue();
         //Assert.assertTrue(false, "check case fail");
+        System.out.println("Huyen check");
     }
     @Test
     @Step("Edit")
