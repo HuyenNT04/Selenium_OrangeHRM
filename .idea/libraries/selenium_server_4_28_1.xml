@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="selenium-server-4.28.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libraries/selenium-server-4.28.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/testng-7.10.2 (1).jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

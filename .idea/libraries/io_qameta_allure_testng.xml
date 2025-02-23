@@ -1,0 +1,8 @@
+<component name="libraryTable">
+  <library name="io.qameta.allure.testng" type="repository">
+    <properties maven-id="io.qameta.allure:allure-testng:2.19.0" />
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

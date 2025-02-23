@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="allure-java-commons-2.29.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libraries/allure-java-commons-2.29.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

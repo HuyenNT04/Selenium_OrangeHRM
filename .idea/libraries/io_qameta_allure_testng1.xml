@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="io.qameta.allure.testng1" type="repository">
+    <properties maven-id="io.qameta.allure:allure-testng:2.19.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libraries/allure-testng-2.19.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/allure-java-commons-2.19.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/slf4j-api-1.7.30.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/allure-model-2.19.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/jcommander-1.72.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/bsh-2.0b6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/allure-test-filter-2.19.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
