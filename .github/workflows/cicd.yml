@@ -30,14 +30,12 @@ jobs:
 #          restore-keys: |
 #            ${{ runner.os }}-maven-
       - name: Install ChromeDriver
-        run: |
-          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-          echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
-          apt-get update -y
-          apt-get install -y google-chrome-stable
-          wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$(wget -q -O - https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
-          unzip /tmp/chromedriver.zip -d /usr/local/bin/
-          chmod +x /usr/local/bin/chromedriver
+      - uses: nanasess/setup-chromedriver@v2
+        with:
+          # Optional: do not specify to match Chrome's version
+          chromedriver-version: '114.0.5735.90'
+          # Optional: if your chrome binary name is different
+          chromeapp: chrome
       - name: Run TestNG Tests with Offline Dependencies
         run: |
           CLASSPATH="libraries/selenium-server-4.28.1.jar:libraries/testng-7.10.2 (1).jar:libraries/log4j-api-2.24.3.jar:libraries/log4j-core-2.24.3.jar:libraries/slf4j-api-1.7.36.jar:libraries/jcommander-1.72.jar:libraries/bsh-2.0b6.jar:out/production/hybrid-framework-OrangeHRM/"
