@@ -4,18 +4,49 @@ on:
   push:
     branches:
       - develop
+  pull_request:
+    branches:
+      - develop
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
+      - name: Check out repository code #make sure to run in virtual
         uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
+      - name: Set up JDK 21 #set up JDK Version
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+#      - name: Set up Maven #maven to download
+#        uses: stCarolas/setup-maven@v4.5
+#        with:
+#          maven-version: 3.9.9
+#      - name: Cache Maven dependencies
+#        uses: actions/cache@v3
+#        with:
+#          path: ~/.m2/repository
+#          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+#          restore-keys: |
+#            ${{ runner.os }}-maven-
+      - name: Install ChromeDriver
         run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+          echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+          apt-get update -y
+          apt-get install -y google-chrome-stable
+          wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$(wget -q -O - https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
+          unzip /tmp/chromedriver.zip -d /usr/local/bin/
+          chmod +x /usr/local/bin/chromedriver
+      - name: Run TestNG Tests with Offline Dependencies
+        run: |
+          CLASSPATH="libraries/selenium-server-4.28.1.jar:libraries/testng-7.10.2 (1).jar:libraries/log4j-api-2.24.3.jar:libraries/log4j-core-2.24.3.jar:libraries/slf4j-api-1.7.36.jar:libraries/jcommander-1.72.jar:libraries/bsh-2.0b6.jar:out/production/hybrid-framework-OrangeHRM/"
+          java org.testng.TestNG resources/runAllTestcases.xml
+        # Thay `resources/runAllTestcases.xml` bằng đường dẫn chính xác đến file XML.
+
+      - name: Upload Test Reports
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: test-output/
