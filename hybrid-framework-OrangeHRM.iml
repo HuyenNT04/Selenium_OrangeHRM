@@ -28,5 +28,6 @@
     <orderEntry type="library" name="allure-test-filter-2.19.0" level="project" />
     <orderEntry type="library" name="slf4j-api-1.7.30" level="project" />
     <orderEntry type="library" name="io.qameta.allure.testng1" level="project" />
+    <orderEntry type="library" name="testng-7.10.2" level="project" />
   </component>
 </module>

@@ -38,7 +38,7 @@ jobs:
           chromeapp: chrome
       - name: Run TestNG Tests with Offline Dependencies
         run: |
-          CLASSPATH="libraries/selenium-server-4.28.1.jar:libraries/testng-7.10.2 (1).jar:libraries/log4j-api-2.24.3.jar:libraries/log4j-core-2.24.3.jar:libraries/slf4j-api-1.7.36.jar:libraries/jcommander-1.72.jar:libraries/bsh-2.0b6.jar:out/production/hybrid-framework-OrangeHRM/"
+          CLASSPATH="libraries/selenium-server-4.28.1.jar:libraries/testng-7.10.2.jar:libraries/log4j-api-2.24.3.jar:libraries/log4j-core-2.24.3.jar:libraries/slf4j-api-1.7.36.jar:libraries/jcommander-1.72.jar:libraries/bsh-2.0b6.jar:out/production/hybrid-framework-OrangeHRM/"
           java org.testng.TestNG resources/runAllTestcases.xml
         # Thay `resources/runAllTestcases.xml` bằng đường dẫn chính xác đến file XML.
 
